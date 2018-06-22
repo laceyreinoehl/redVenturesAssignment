@@ -1,0 +1,274 @@
+$primaryBlue: #083d8c;
+$lightBlue: #216ddf;
+$white: #ffffff;
+$offWhite: #f6f6f6;
+$lightGray: #cfcfcf;
+
+$color-text: #083d8c;
+$color-highlight: #216ddf;
+
+/*--------------------------------
+Header Styling
+---------------------------------*/
+#topHeader {
+  text-align: right;
+  background-color: $primaryBlue;
+  padding: 20px;
+}
+
+#topHeader a {
+  text-decoration: none;
+  color: $white;
+  padding: 20px;
+  margin: 20px;
+}
+
+/*--------------------------------
+Dealers
+---------------------------------*/
+#poolProsFilter {
+  background-color: $lightGray;
+  width: 80%;
+  margin: auto;
+}
+
+#poolProsFilter h3{
+  display: inline;
+}
+
+.dealerDataContainer {
+  border: 1px solid $lightGray;
+  border-radius: 10px;
+  box-shadow: 5px 5px $lightGray;
+  width: 400px;
+}
+
+.dealerDataInnerContainer {
+  width: 90%;
+  margin: auto;
+}
+
+.dealerCertifications {
+  background-color: $offWhite
+}
+
+/*--------------------------------
+Footer Styling
+--------------------------------*/
+footer {
+  color: $white;
+  /*position: fixed;*/
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+#footerTop {
+  background-color: $primaryBlue;
+  text-align: center;
+  min-height: 150px;
+}
+
+#footerBottom {
+  background-color: $lightBlue;
+  text-align: center;
+  min-height: 75px;
+}
+
+footer a {
+  text-decoration: none;
+  color: $white;
+}
+
+.fa-facebook, .fa-twitter, .fa-youtube {
+  color: $white;
+}
+
+/*--------------------------------
+ Functional Styles (Required)
+---------------------------------*/
+
+header {
+  position: relative;
+  border-bottom: 2px solid $lightGray;
+}
+
+#toggle, .toggle {
+  display: none;
+}
+
+.menu > li {
+  list-style: none;
+  float: left;
+}
+
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+@media only screen and (max-width: 768px) {
+  .menu {
+    display: none;
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    right: 0;
+  }
+  .menu > li {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+  .menu > li > a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .toggle {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  #toggle:checked + nav .menu {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.findAPoolPro{
+  border: 1px solid $primaryBlue;
+  padding: 5px;
+}
+
+/*--------------------------------
+ Presentation Styles (Editable)
+---------------------------------*/
+
+header {
+  min-height: 4.5em;
+  height: 100%;
+  padding: 25px;
+  background: $white;
+}
+
+header > img {
+  float: left;
+  margin: 0;
+  padding: 0.785714286em;
+  line-height: 1;
+  font-size: 28px;
+  color: $color-text;
+  max-width: 100%;
+}
+
+nav {
+  display: block;
+  float: right;
+}
+
+nav, .menu, .menu > li, .menu > li > a {
+  height: 100%;
+}
+
+.menu > li > a {
+  display: block;
+  padding: 1.5em;
+  color: $color-text;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  /*
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  -o-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  */
+}
+
+.menu > li > a:hover, .menu > li > a:focus {
+  background: $color-text;
+  box-shadow: inset 0px 5px $color-highlight;
+  color: $color-highlight;
+  padding: 1.75em 1.5em;
+}
+
+.toggle {
+  z-index: 2;
+}
+
+@media only screen and (max-width: 768px) {
+  .menu {
+    background: $white;
+    border-top: 1px solid $color-text;
+  }
+
+  .menu, .menu > li, .menu > li > a {
+    height: auto;
+  }
+  .menu > li > a {
+    padding: 15px 15px;
+  }
+
+  .menu > li > a:hover, .menu > li > a:focus {
+    background: $color-text;
+    box-shadow: inset 5px 0px $color-highlight;
+    padding: 15px 15px 15px 25px;
+  }
+
+  .toggle:after {
+    content: attr(data-open);
+    display: block;
+    margin: 0.875em;
+    padding: 0.5em 1.5em;
+    background: $white;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: $color-text;
+    border: 2px solid $color-text;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .toggle:hover:after {
+    color: $white;
+    background: $color-text;
+  }
+
+  #toggle:checked + nav .toggle:after {
+    content: attr(data-close);
+    color: $white;
+    background: $color-text;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  header > img {
+    text-align: center;
+  }
+  header > img, nav, .toggle:after {
+    float: none;
+  }
+  .toggle:after {
+    text-align: center;
+    width: 100%;
+  }
+}

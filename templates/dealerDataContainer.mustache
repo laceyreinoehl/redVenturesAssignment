@@ -1,0 +1,27 @@
+<div class = 'dealerDataContainer'>
+    <div class = 'dealerDataInnerContainer'>
+        <div>
+            <h3>   dealerData.data.name   </h3>
+            <hr/>
+        </div>
+        <div>
+            <img src = 'RV-Pool-Pro-Assets/RV-Pool-Pro-Assets/phone-icon-desktop.png'/>
+            <span>   dealerData.data.phone1   </span>
+        </div>
+        <div>
+            <p><it>Can't talk now? Click below to send an email.</it></p>
+        </div>
+        <div>
+            <span class = 'contactThisPro'><a href = 'mailto:   dealerData.data.email   '>Contact This Pro</a></span>
+        </div>
+        <div>
+            <p><strong>Business Hours</strong></p>
+            <p>Weekdays    dealerData.data.weekHours.mon  </p>    //TODO:Check to make sure week hours are actually the same M-F
+            <p>Saturdays    ((dealerData.data.weekHours.sat) !== '' ? (dealerData.data.weekHours.sat) :   - CLOSED )  </p>
+            <p>Sundays    dealerData.data.weekHours.sun  </p>
+        </div>
+        <div class = 'dealerCertifications'>
+            loadCertifications(dealerData.data.certifications)
+        </div>
+    </div>
+</div>
