@@ -1,88 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Pool Pros</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Pool Pros</title>
+    <link rel="stylesheet" href="poolPros.css">
 
-        <link rel = "stylesheet" href = "poolPros.css">
-    </head>
-    <body>
-        <div id = "topHeader">
-            <a href = "#">Dealers and Distributors</a>
-            <a href = "#">Commercial Service <img src = "RV-Pool-Pro-Assets/RV-Pool-Pro-Assets/action-commercial-icon.png" alt = "Action Commercial Services"/></a>
-        </div>
-        <header>
-            <img src = "RV-Pool-Pro-Assets/RV-Pool-Pro-Assets/pool-pros-logo.png" alt = "Pool Pros"/>
+    <link rel="stylesheet" href="assets/tingle/dist/tingle.css">
+    <script src="assets/tingle/dist/tingle.min.js"></script>
 
-            <input type="checkbox" id="toggle" />
-            <nav>
-                <label for="toggle" class="toggle" data-open="Menu" data-close="Close" onclick></label>
-                <ul class="menu">
-                    <li><a href="#">Pools &amp; Spas</a></li>
-                    <li><a href="#">Supplies</a></li>
-                    <li><a href="#">Resources</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#" class = "findAPoolPro"><img src = "RV-Pool-Pro-Assets/RV-Pool-Pro-Assets/location-icon.png" alt = "location"/>
-                        Find a Pool Pro</a></li>
-                </ul>
-            </nav>
-        </header>
-        <div>
-            <div id = "poolProsFilter">
-                <span id = "dealersInZipCode"></span>
-                <form id = "filterResult" method = "POST">
-                    <h3>Filter Results</h3>
-                    <input type = "checkbox" id = "service" name = "service" value = "service"/>1
-                    <label for = "service">Service</label>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="javascript/mustache.min.js" type="text/javascript"></script>
+    <script src="javascript/poolPros.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="topHeader">
+    <a href="#">Dealers and Distributors</a>
+    <a href="#">Commercial Service <img src="assets/images/action-commercial-icon.png"
+                                        alt="Action Commercial Services"/></a>
+</div>
+<header>
+    <img src="assets/images/pool-pros-logo.png" alt="Pool Pros"/>
 
-                    <input type = "checkbox" id = "installation" name = "installation" value = "installation"/>
-                    <label for = "installation">Installation</label>
+    <input type="checkbox" id="toggle"/>
+    <nav>
+        <label for="toggle" class="toggle" data-open="Menu" data-close="Close" onclick></label>
+        <ul class="menu">
+            <li><a href="#">Pools &amp; Spas</a></li>
+            <li><a href="#">Supplies</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Services</a></li>
+            <li class="findAPoolPro">
+                <img src="assets/images/location-icon.png" alt="location"/>
+                <a href="#">Find a Pool Pro</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div>
+    <div id="waterImage">
+    </div>
+    <div class="pageContainer">
+        <div id="poolProsFilter">
+            <div id="poolFilterContainer">
+                <div id="dealersInZipCode"></div>
+                <div id="filters">
+                    <h3 id="filterResultsContainer">Filter Results</h3>
+                    <div id="filterSelects">
+                        <input class="filterCheckbox" id="service" type="checkbox" checked>
+                        <label class="filter" for="service">Service</label>
 
-                    <input type = "checkbox" id = "residential" name = "residential" value = "residential"/>
-                    <label for = "residential">Residential</label>
+                        <input class="filterCheckbox" id="installation" type="checkbox">
+                        <label class="filter" for="installation">Installation</label>
 
-                    <input type = "checkbox" id = "commercial" name = "commercial" value = "commercial"/>
-                    <label for = "commercial">Commercial</label>
-                </form>
-            </div>
-        </div>
+                        <input class="filterCheckbox" id="residential" type="checkbox">
+                        <label class="filter" for="residential">Residential</label>
 
-        <div>
-            <div id = "poolPros">
-
-            </div>
-        </div>
-
-        <footer>
-            <div id = "footerTop">
-                <div class = "marginAuto">
-                    <div>
-                        <img src = "RV-Pool-Pro-Assets/RV-Pool-Pro-Assets/pool-pros-logo-footer.png"/>
-                    </div>
-                    <div>
-                        <span>CONNECT WITH US.</span>
-                        <a href="#">
-                            <img src = "RV-Pool-Pro-Assets/RV-Pool-Pro-Assets/twitter-icon.png"/>
-                        </a>
-                        <a href="#">
-                            <img src = "RV-Pool-Pro-Assets/RV-Pool-Pro-Assets/facebook-icon.png"/>
-                        </a>
-                        <a href="#">
-                            <img src = "RV-Pool-Pro-Assets/RV-Pool-Pro-Assets/youtube-icon.png"/>
-                        </a>
+                        <input class="filterCheckbox" id="commercial" type="checkbox">
+                        <label class="filter" for="commercial">Commercial
+                            <img src="assets/images/tool-tip-icon-filtering.png" onclick="displayTooltip();"
+                                 alt="tooltip icon"/>
+                        </label>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div id="poolProsContainer">
+            <div id="poolPros">
 
             </div>
-            <div id = "footerBottom">
-                <div class = "marginAuto">
-                    <span>
-                        &copy; 2018 Pool Pros | <a href = "">Privacy Policy</a> | <a href = "">Terms and Conditions</a>
-                    </span>
-                </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div id="footerTop">
+        <div>
+            <div>
+                <img id="footerLogo" src="assets/images/pool-pros-logo-footer.png"/>
             </div>
-        </footer>
-    </body>
-    <script src = "javascript/mustache.min.js" type = "text/javascript"></script>
-    <script src = "javascript/poolPros.js" type = "text/javascript"></script>
+            <div>
+                <span>CONNECT WITH US.</span>
+                <a href="#">
+                    <img class="socialIcon" src="assets/images/twitter-icon.png"/>
+                </a>
+                <a href="#">
+                    <img class="socialIcon" src="assets/images/facebook-icon.png"/>
+                </a>
+                <a href="#">
+                    <img class="socialIcon" src="assets/images/youtube-icon.png"/>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div id="footerBottom">
+        <div id = "footerBottomContainer">
+            <div id="mobileFooterBottom" style="display: none;">
+                <a href="#">Dealers and Distributors</a> | <a href="#">Commercial Service <img
+                    src="assets/images/action-commercial-icon.png"
+                    alt="Action Commercial Services"/></a>
+                <hr/>
+            </div>
+            <div>
+            <span>
+                &copy; 2018 Pool Pros | <a href="">Privacy Policy</a> | <a href="">Terms and Conditions</a>
+            </span>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+<script id="dealerDataTemplate" type="x-tmpl-mustache">
+    <div class = 'dealerDataContainer'>
+        <div class = 'dealerDataInnerContainer'>
+            <div>
+                <h3>{{dealerData.data.name}}</h3>
+                <hr/>
+            </div>
+        <div class='contactPhone'>
+            <img src = 'RV-Pool-Pro-Assets/RV-Pool-Pro-Assets/phone-icon-desktop.png'/>
+            <h2>{{}dealerData.data.phone1}}</h2>
+        </div>
+        <div>
+            <p><it>Can't talk now? Click below to send an email.</it></p>
+        </div>
+        <div class = 'contactThisPro'>
+            <a>
+                <img src = 'RV-Pool-Pro-Assets/RV-Pool-Pro-Assets/email-icon.png'/> Contact This Pro
+            </a>
+        </div>
+        <div>
+            <p><strong>Business Hours</strong></p>
+            <p>Weekdays{{dealerData.data.weekHours.mon}}</p>
+            <p>Saturdays " + ((dealerData.data.weekHours.sat) !== '' ? (dealerData.data.weekHours.sat) : " - CLOSED") + "</p>
+            <p>Sundays " + dealerData.data.weekHours.sun + "</p>
+        </div>
+    </div>
+    <div class = 'dealerCertifications'>
+        loadCertifications(dealerData.data.certifications
+    </div>
+    </div>
+
+</script>
+
+<script id="emailFormTemplate" type="x-tmpl-mustache">
+    <div>
+        <div class = 'modalFormHeader'>
+            <p>EMAIL</p>
+            <h1>Premium Pools &amp; Spas of Charlotte</h1>
+        </div>
+        <p>Fill out the form below and <span id = "dealerNameContainer"></span> will get in touch</p>
+        <div class = "innerEmailForm">
+            <form id = "sendEmailForm" method = "POST">
+                <div class = "formLabelContainer">
+                    <label>First and last name</label>
+                    <img src = "assets/images/circle-form.png" alt = "circle form" id = "firstAndLastValidationIndicator"/>
+                </div>
+                <div class = "formInputContainer">
+                    <input type = 'text' name = "firstAndLast" id = "firstAndLast" required/>
+                </div>
+
+                <div class = "formLabelContainer">
+                    <label>Phone number</label>
+                    <img src = "assets/images/circle-form.png" alt = "circle form" id = "phoneNumberValidationIndicator"/>
+                </div>
+                <div class = "formInputContainer">
+                    <input type = "text" name = "phoneNumber" id = "phoneNumber" required/>
+                </div>
+
+                <div class = "formLabelContainer">
+                    <label>Email address</label>
+                    <img src = "assets/images/circle-form.png" alt = "circle form" id = "emailAddressValidationIndicator"/>
+                </div>
+                <div class = "formInputContainer">
+                    <input type = "text" name = "email" id = "email" required/>
+                </div>
+
+                <div class = "formLabelContainer">
+                    <label>Comments or questions</label>
+                    <span class = "optional">Optional</span>
+                </div>
+                <div class = "formInputContainer">
+                    <textarea name = "commentsOrQuestions"></textarea>
+                </div>
+
+                <div class = "formLabelContainer">
+                    <span>Do you currently own a pool or spa?</span>
+                    <span class = "optional">Optional</span>
+                </div>
+                <div class = "formInputContainer">
+                    <div class="switch-field">
+                        <input type="radio" id="switch_left" name="switch_2" value="yes" checked/>
+                        <label for="switch_left">Yes</label>
+                        <input type="radio" id="switch_right" name="switch_2" value="no" />
+                        <label for="switch_right">No</label>
+                    </div>
+                <hr/>
+                <div class = "formSubmitButtonContainer">
+                    <button type = "submit">
+                        Send my email
+                        <img src = "assets/images/next-arrow.png"/>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</script>
+
 </html>
