@@ -5,72 +5,69 @@
 
 $primaryBlue: #083d8c;
 $royalBlue: #216ddf;
-$lightBlue: #216ddf;
 $teal: #08c8c7;
 $white: #ffffff;
 $offWhite: #f6f6f6;
 $lightGray: #cfcfcf;
 $darkGray: #434343;
 
-$color-text: #083d8c;
-$color-highlight: #216ddf;
+$font_family: "Open Sans", sans-serif;
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: $font_family;
 }
-a{
+a {
   text-decoration: none;
 }
 #static-modal {
   display: none;
 }
-
-label img{
-  vertical-align: middle;
+label {
+  img {
+    vertical-align: middle;
+  }
 }
 input[type='checkbox'] {
   position: absolute;
   left: -9999px;
+  &:checked {
+    &+label.filter {
+      &:before {
+        width: 10px;
+        height: 10px;
+        background-color: $white;
+        border: 10px solid $primaryBlue;
+        border-radius: 10px;
+      }
+    }
+  }
 }
-
 label.filter {
   position: relative;
   padding: 15px 30px 15px 50px;
   cursor: pointer;
   user-select: none;
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    transition: background-color .2s;
+    background-color: $white;
+    border: 1px solid $lightGray;
+    border-radius: 10px;
+  }
+  &:first-of-type {
+    transform: translateX(-40px);
+  }
+  &:last-of-type {
+    transform: translateX(40px);
+  }
 }
-
-label.filter::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 10px;
-  width: 30px;
-  height: 30px;
-  transition: background-color .2s;
-  background-color: $white;
-  border: 1px solid $lightGray;
-  border-radius: 10px;
-}
-
-label.filter:first-of-type {
-  transform: translateX(-40px);
-}
-
-label.filter:last-of-type {
-  transform: translateX(40px);
-}
-
-input[type='checkbox']:checked + label.filter:before {
-  width: 10px;
-  height: 10px;
-  background-color: $white;
-  border: 10px solid $primaryBlue;
-  border-radius: 10px;
-}
-
 #dealersInZipCode {
   padding-right: 2em;
   display: inline;
@@ -78,37 +75,32 @@ input[type='checkbox']:checked + label.filter:before {
   font-weight: bolder;
   border-right: 1px solid $lightGray;
 }
-
 #poolFilterContainer {
   width: 75%;
   margin: auto;
 }
-
 #filterSelects {
   display: inline;
+  display: inline-block;
 }
-
 #topHeader {
   text-align: right;
   background-color: $primaryBlue;
   padding: 20px;
+  a {
+    text-decoration: none;
+    color: $white;
+    padding: 20px;
+  }
+  img {
+    vertical-align: middle;
+  }
 }
-
-#topHeader a {
-  text-decoration: none;
-  color: $white;
-  padding: 20px;
-}
-
-#topHeader img{
-  vertical-align: middle;
-}
-
 .pageContainer {
   width: 80%;
   margin: -5.3% auto auto;
+  text-align: center;
 }
-
 #waterImage {
   background: url("assets/images/water-image.png") no-repeat;
   box-sizing: border-box;
@@ -116,13 +108,11 @@ input[type='checkbox']:checked + label.filter:before {
   height: 199px;
   background-size: 100% 100%;
 }
-
 #filters {
   text-align: right;
   display: inline;
   padding-left: 20px;
 }
-
 #poolProsFilter {
   background-color: $offWhite;
   -webkit-border-radius: 10px;
@@ -130,55 +120,44 @@ input[type='checkbox']:checked + label.filter:before {
   border-radius: 10px;
   padding: 20px;
   margin: 30px auto;
+  &:before {
+    background-color: $offWhite;
+    display: block;
+  }
+  h3 {
+    display: inline;
+  }
 }
-
 .dealerCertificationContainer {
   float: left;
   width: 50%;
   margin-bottom: 10px;
+  span {
+    padding: 10px;
+    img {
+      vertical-align: middle;
+    }
+  }
 }
-
-.dealerCertificationContainer span{
-  padding: 10px;
+.contactPhone {
+  h2 {
+    display: inline;
+    padding-left: .50em;
+    vertical-align: middle;
+  }
+  img {
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+  }
 }
-
-.dealerCertificationContainer span img{
-  vertical-align: middle;
-}
-
-#poolProsFilter:before {
-
-  background-color: $offWhite;
-  display: block;
-}
-
-.contactPhone h2 {
-  display: inline;
-  padding-left: .50em;
-}
-
-.contactPhone img, .contactPhone h2{
-  vertical-align: middle;
-}
-
-.contactPhone img {
-  height: 30px;
-  width: 30px;
-}
-
-#poolProsFilter h3 {
-  display: inline;
-}
-
 #poolProsContainer {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-
 #poolPros {
   margin: auto;
 }
-
 .dealerDataContainer {
   border: 1px solid $lightGray;
   border-radius: 10px;
@@ -187,25 +166,20 @@ input[type='checkbox']:checked + label.filter:before {
   height: 400px;
   width: 475px;
   margin: 10px;
-
 }
-
 .dealerDataInnerContainer {
   width: 90%;
   margin: auto;
   text-align: center;
+  h3 {
+    font-size: 28px;
+    font-weight: lighter;
+    color: $darkGray;
+  }
 }
-
-.dealerDataInnerContainer h3{
-  font-size: 28px;
-  font-weight: lighter;
-  color: $darkGray;
-}
-
-.dealerNameContainer{
+.dealerNameContainer {
   height: 75px;
 }
-
 .contactThisPro {
   border: 2px solid $teal;
   padding: 10px;
@@ -214,16 +188,14 @@ input[type='checkbox']:checked + label.filter:before {
   border-radius: 3px;
   width: calc(100% / 2);
   margin: auto;
+  img {
+    vertical-align: middle;
+    width: 20px;
+  }
+  a {
+    vertical-align: middle;
+  }
 }
-
-.contactThisPro img, .contactThisPro a {
-  vertical-align: middle;
-}
-
-.contactThisPro img{
-  width: 20px;
-}
-
 .dealerCertifications {
   background-color: $offWhite;
   height: 75px;
@@ -231,209 +203,296 @@ input[type='checkbox']:checked + label.filter:before {
   padding-bottom: 10px;
   padding-left: 10px;
 }
-
-.modalFormHeader{
+.modalFormHeader {
   background-color: $primaryBlue;
   color: $white;
+  div {
+    padding: 30px;
+  }
 }
-
-.innerEmailForm{
+.innerEmailForm {
   background-color: $offWhite;
   padding: 20px;
   margin: 20px;
+  label {
+    font-weight: bold;
+  }
+  input {
+    width: 100%;
+  }
+  textarea {
+    width: 100%;
+  }
+  span.optional {
+    font-style: italic;
+    text-align: right;
+    float: right;
+  }
 }
-
-.innerEmailForm label{
-  font-weight: bold;
-}
-
-.innerEmailForm input, .innerEmailForm textarea{
-  width: 100%;
-}
-
-.innerEmailForm span.optional{
-  font-style: italic;
-  text-align: right;
-  float: right;
-}
-
-.formLabelContainer{
+.formLabelContainer {
   margin-bottom: 5px;
+  img {
+    height: 20px;
+    vertical-align: middle;
+    text-align: right;
+    float: right;
+  }
 }
-
-.formLabelContainer img{
-  height: 20px;
-  vertical-align: middle;
-  text-align: right;
-  float: right;
-}
-
-.formInputContainer{
+.formInputContainer {
   margin-bottom: 10px;
 }
-
-.formSubmitButtonContainer{
+.formSubmitButtonContainer {
   text-align: center;
   padding: 20px;
+  button {
+    background-color: $offWhite;
+    border: 0;
+    font-weight: bolder;
+    font-size: 20px;
+    vertical-align: middle;
+    &:before {
+      content: "Send my email";
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+    }
+    &:after {
+      content: url('./assets/images/next-arrow.png');
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+    }
+    &:hover {
+      color: $primaryBlue;
+      cursor: pointer;
+    }
+    img {
+      vertical-align: middle;
+    }
+  }
 }
-
-.formSubmitButtonContainer button{
-  background-color: $offWhite;
-  border: 0;
-  font-weight: bolder;
-  font-size: 20px;
-}
-
-.formSubmitButtonContainer button:hover{
-  color: $primaryBlue
-}
-
-.formSubmitButtonContainer button img{
-  vertical-align: middle;
-}
-
-.switch-field {
+.switchField {
   overflow: hidden;
+  input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+    &:checked {
+      &+label {
+        background-color: $teal;
+        color: $white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+    }
+  }
+  label {
+    float: left;
+    display: inline-block;
+    width: 60px;
+    background-color: $white;
+    color: $darkGray;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    text-shadow: none;
+    padding: 6px 14px;
+    border: 1px solid $darkGray;
+    -webkit-box-shadow: inset 0 1px 3px $offWhite, 0 1px $darkGray;
+    box-shadow: inset 0 1px 3px $offWhite, 0 1px $darkGray;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    &:hover {
+      cursor: pointer;
+    }
+    &:first-of-type {
+      border-radius: 4px 0 0 4px;
+    }
+    &:last-of-type {
+      border-radius: 0 4px 4px 0;
+    }
+  }
 }
-
-.switch-field input {
-  position: absolute !important;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  width: 1px;
-  border: 0;
-  overflow: hidden;
-}
-
-.switch-field label {
-  float: left;
-}
-
-.switch-field label {
-  display: inline-block;
-  width: 60px;
-  background-color: $white;
-  color: $darkGray;
-  font-size: 14px;
-  font-weight: normal;
-  text-align: center;
-  text-shadow: none;
-  padding: 6px 14px;
-  border: 1px solid $darkGray;
-  -webkit-box-shadow: inset 0 1px 3px $offWhite, 0 1px $darkGray;
-  box-shadow: inset 0 1px 3px $offWhite, 0 1px $darkGray;
-  -webkit-transition: all 0.1s ease-in-out;
-  -moz-transition:    all 0.1s ease-in-out;
-  -ms-transition:     all 0.1s ease-in-out;
-  -o-transition:      all 0.1s ease-in-out;
-  transition:         all 0.1s ease-in-out;
-}
-
-.switch-field label:hover {
-  cursor: pointer;
-}
-
-.switch-field input:checked + label {
-  background-color: $royalBlue;
-  color: $white;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-.switch-field label:first-of-type {
-  border-radius: 4px 0 0 4px;
-}
-
-.switch-field label:last-of-type {
-  border-radius: 0 4px 4px 0;
-}
-
 footer {
   color: $white;
   left: 0;
   bottom: 0;
   width: 100%;
+  a {
+    text-decoration: none;
+    color: $white;
+  }
 }
-
 #footerTop {
   background-color: $primaryBlue;
   text-align: center;
   min-height: 125px;
   padding-top: 50px;
+  .socialIcon {
+    vertical-align: middle;
+    height: 25px;
+  }
 }
-
-
 #footerLogo {
   width: 200px;
   padding-bottom: 20px;
 }
-
-#footerTop .socialIcon{
-  vertical-align: middle;
-  height: 25px;
-}
-
 #footerBottom {
-  background-color: $lightBlue;
+  background-color: $royalBlue;
   text-align: center;
   padding: 20px 0;
 }
-
-footer a {
-  text-decoration: none;
-  color: $white;
-}
-
-
-
-/*--------------------------------
- Functional Styles (Required)
----------------------------------*/
-
 header {
   position: relative;
   border-bottom: 2px solid $lightGray;
+  min-height: 4.5em;
+  padding: 25px;
+  background: $white;
 }
-
-#toggle, .toggle {
+#toggle {
   display: none;
 }
-
-.menu > li {
-  list-style: none;
-  float: left;
+.toggle {
+  display: none;
+  z-index: 2;
 }
-
-.clearfix:before, .clearfix:after {
-  display: table;
-  content: "";
+.menu {
+  >li {
+    list-style: none;
+    float: left;
+    height: 100%;
+    >a {
+      height: 100%;
+      display: block;
+      padding: 1.5em;
+      color: $primaryBlue;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      &:hover {
+        color: $darkGray;
+      }
+      &:focus {
+        color: $darkGray;
+      }
+    }
+  }
+  height: 100%;
 }
-
-.clearfix:after {
-  clear: both;
+.clearfix {
+  &:before {
+    display: table;
+    content: "";
+  }
+  &:after {
+    display: table;
+    content: "";
+    clear: both;
+  }
 }
-
+#poolProsLogoContainer {
+  display: inline-block;
+  margin: 0;
+  padding: 0.785714286em;
+  line-height: 1;
+  width: calc((100% / 3));
+  >img {
+    float: left;
+    width: 80%;
+  }
+}
+.findAPoolPro {
+  border: 1px solid $primaryBlue;
+  padding: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  float: right;
+  width: 175px;
+  display: inline-block;
+  font-weight: bold;
+  margin-top: 25px;
+  text-align: center;
+  div {
+    display: inline;
+    vertical-align: middle;
+  }
+  img {
+    display: inline;
+    vertical-align: middle;
+    width: 25px;
+  }
+  a {
+    vertical-align: middle;
+  }
+}
+.filterSelectContainer {
+  display: inline;
+}
+nav {
+  display: block;
+  float: right;
+  height: 100%;
+}
+@media only screen and (max-width: 1000px) {
+  #poolProsFilter {
+    width: 800px;
+  }
+}
 @media only screen and (max-width: 768px) {
   .menu {
+    background: $white;
+    border-top: 1px solid $primaryBlue;
     display: none;
     opacity: 0;
     width: 100%;
     position: absolute;
     right: 0;
+    height: auto;
+    >li {
+      display: block;
+      width: 100%;
+      margin: 0;
+      height: auto;
+      >a {
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-weight: bolder;
+        color: $darkGray !important;
+        font-size: 24px;
+        height: auto;
+        padding: 15px 15px;
+        &:after {
+          content: url('./assets/images/next-arrow.png');
+          vertical-align: middle;
+          text-align: right;
+          float: right;
+        }
+      }
+    }
   }
-  .menu > li {
-    display: block;
-    width: 100%;
-    margin: 0;
+  #topHeader {
+    display: none;
   }
-  .menu > li > a {
-    display: block;
-    width: 100%;
-    text-decoration: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    font-weight: bolder;
+  #poolProsLogoContainer {
+    >img {
+      width: 100%;
+    }
+    text-align: center;
+    float: left;
+  }
+  .findAPoolPro {
+    float: left;
   }
   .toggle {
     display: block;
@@ -442,219 +501,195 @@ header {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
+    height: 75px;
+    width: 75px;
+    float: right;
+    &:before {
+      content: url('./assets/images/menu-icon-mobile.png');
+      transform: scale(.5);
+      display: block;
+      margin-top: -30px;
+      -webkit-transition: all 0.1s linear;
+      -moz-transition: all 0.1s linear;
+      -o-transition: all 0.1s linear;
+      transition: all 0.1s linear;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    &:hover {
+      &:before {
+        color: $royalBlue;
+      }
+    }
   }
-  #toggle:checked + nav .menu {
-    display: block;
-    opacity: 1;
-  }
-}
-
-.findAPoolPro {
-  border: 1px solid $primaryBlue;
-  padding-left: 5px;
-  padding-right: 5px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-
-}
-
-.findAPoolPro img {
-  float: left;
-  padding-top: 8%;
-}
-
-.findAPoolPro a {
-  float: right;
-}
-
-/*--------------------------------
- Presentation Styles (Editable)
----------------------------------*/
-
-header {
-  min-height: 4.5em;
-  padding: 25px;
-  background: $white;
-}
-
-header > img {
-  float: left;
-  margin: 0;
-  padding: 0.785714286em;
-  line-height: 1;
-  width: calc((100% / 4));
-}
-
-nav {
-  display: block;
-  float: right;
-}
-
-nav, .menu, .menu > li, .menu > li > a {
-  height: 100%;
-}
-
-.menu > li > a {
-  display: block;
-  padding: 1.5em;
-  color: $color-text;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  /*
-  -webkit-transition: all 0.1s linear;
-  -moz-transition: all 0.1s linear;
-  -o-transition: all 0.1s linear;
-  transition: all 0.1s linear;
-  */
-}
-
-.menu > li > a:hover, .menu > li > a:focus {
-  color: $darkGray;
-}
-
-.toggle {
-  z-index: 2;
-}
-
-@media only screen and (max-width: 768px) {
-  .menu {
-    background: $white;
-    border-top: 1px solid $color-text;
-  }
-
-  .menu, .menu > li, .menu > li > a {
-    height: auto;
-  }
-  .menu > li > a {
-    padding: 15px 15px;
-  }
-
-  .menu > li > a:hover, .menu > li > a:focus {
-  }
-
-  .toggle:after {
-    content: url('./assets/images/menu-icon-mobile.png');
-    display: block;
-    -webkit-transition: all 0.1s linear;
-    -moz-transition: all 0.1s linear;
-    -o-transition: all 0.1s linear;
-    transition: all 0.1s linear;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-
-  .toggle:hover:after {
-    color: $white;
-  }
-
-  #toggle:checked + nav .toggle:after {
-    content: attr(data-close);
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  #topHeader{
-    display: none;
-  }
-
-  header > img {
-    text-align: center;
-  }
-  header > img, nav, .toggle:after {
-    float: none;
-  }
-  .toggle:after {
-    text-align: center;
-    width: 100%;
+  #toggle {
+    &:checked {
+      &+nav {
+        .menu {
+          display: block;
+          opacity: 1;
+        }
+        .toggle {
+          &:before {
+            content: attr(data-close);
+            margin-top: 10px;
+            font-size: 60px;
+            font-weight: bolder;
+            color: $teal;
+          }
+        }
+      }
+    }
   }
   #filterSelects {
-    /*
-        display: none;*/
+    display: none;
     width: 100%;
+    height: 100%;
+    text-align: left;
+  }
+  .filterSelectContainer {
+    padding-top: 2em;
     display: block;
-
   }
   #dealersInZipCode {
     font-size: 12px;
   }
   #filterResultsContainer {
-    font-size: 12px;
+    font-size: 16px;
     display: block;
-
+    &:after {
+      content: url('./assets/images/drop-down-arrow.png');
+    }
   }
-  #filterResultsContainer:after {
-    font-size: 12px;
-    content: '\\/';
-
+  #poolProsFilter {
+    width: 500px;
   }
-
-  .dealerDataInnerContainer hr{
-    display: none;
-  }
-
-  dealerDataInnerContainer h3{
-    font-size: 24px;
-  }
-
-  .dealerNameContainer{
-    height: 40px;
-  }
-
-  .contactPhone{
+  .contactPhone {
     background-color: $royalBlue;
     margin: 50px;
     padding: 5px;
+    h3 {
+      display: inline !important;
+      color: $white;
+      font-size: 14px;
+      font-weight: bolder;
+    }
+    h2 {
+      display: inline;
+      color: $white;
+    }
+    img {
+      content: url('./assets/images/phone-icon-mobile.png');
+      float: left;
+    }
   }
-
-  .contactPhone h3{
-    display: inline !important;
-    color: $white;
-    font-size: 14px;
-    font-weight: bolder;
+}
+@media only screen and (max-width: 575px) {
+  #topHeader {
+    display: none;
   }
-
-  .contactPhone h2{
-    display: inline;
-    color: $white;
-  }
-  .contactPhone img{
-    content: url('./assets/images/phone-icon-mobile.png');
+  #poolProsLogoContainer {
+    >img {
+      width: 100%;
+    }
+    text-align: center;
     float: left;
   }
-  
-  #mobileFooterBottom{
+  .findAPoolPro {
+    float: left;
+  }
+  #filterSelects {
+    display: none;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+  }
+  .filterSelectContainer {
+    padding-top: 2em;
+    display: block;
+  }
+  #dealersInZipCode {
+    font-size: 12px;
+  }
+  #filterResultsContainer {
+    font-size: 16px;
+    display: block;
+    &:after {
+      content: url('./assets/images/drop-down-arrow.png');
+    }
+  }
+  .dealerDataInnerContainer {
+    hr {
+      display: none;
+    }
+    h3 {
+      font-size: 24px;
+    }
+  }
+  .dealerNameContainer {
+    height: 40px;
+  }
+  .contactPhone {
+    background-color: $royalBlue;
+    margin: 50px;
+    padding: 5px;
+    h3 {
+      display: inline !important;
+      color: $white;
+      font-size: 14px;
+      font-weight: bolder;
+    }
+    h2 {
+      display: inline;
+      color: $white;
+    }
+    img {
+      content: url('./assets/images/phone-icon-mobile.png');
+      float: left;
+    }
+  }
+  .formSubmitButtonContainer {
+    button {
+      color: $teal;
+      float: right;
+      &:before {
+        content: "Send";
+      }
+      &:after {
+        content: "";
+      }
+    }
+  }
+  .tingle-modal-box__footer {
+    display: none;
+  }
+  #mobileFooterBottom {
     display: block !important;
+    a {
+      img {
+        vertical-align: middle;
+      }
+    }
+    hr {
+      border: 1px solid $lightGray;
+      margin: 10px auto;
+      width: 80%;
+    }
   }
-
-  #mobileFooterBottom a img{
-    vertical-align: middle;
-  }
-
-  #mobileFooterBottom hr{
-    border: 1px solid $lightGray;
-    margin: 10px auto;
-    width: 80%;
-  }
-
   #footerTop {
     min-height: 125px;
     padding-top: 10%;
+    .socialIcon {
+      vertical-align: middle;
+      height: 25px;
+    }
   }
-
-  #footerTop .socialIcon{
-    vertical-align: middle;
-    height: 25px;
-  }
-
   #footerBottom {
     padding-top: 5%;
     padding-bottom: 5%;
   }
-
-  #footerBottomContainer{
+  #footerBottomContainer {
     vertical-align: middle;
   }
 }
